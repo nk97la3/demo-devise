@@ -1,0 +1,17 @@
+<%= form_with model: @article, local: true do |form| %>
+  <p hidden="hidden">User ID<br>
+    <%= form.text_field :user_id , require: true, value: current_user.id %></p>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :desc %><br>
+    <%= form.text_area :desc %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>

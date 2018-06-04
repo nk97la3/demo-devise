@@ -1,0 +1,13 @@
+<h1 style="text-align: center;">Home Page</h1>
+
+</div>
+
+<table align="center">
+
+  <% @articles.each do |article| %>
+    <tr>
+      <td><b><%= link_to article.title,article_path(article) %></b> <%= article.created_at%></td>
+         </tr>
+          <td><%= article.desc %></td>
+  <%end%>
+</table>

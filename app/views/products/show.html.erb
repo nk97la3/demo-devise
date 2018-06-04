@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Opening:</strong>
+  <%= @product.opening %>
+</p>
+<p>
+  <strong>Avatar</strong>
+  </p>
+<%= image_tag @product.image_url.to_s %>
+<p>
+  <strong>Body:</strong>
+  <%= @product.body %>
+</p>
+
+<p>
+  <strong>Conclusion:</strong>
+  <%= @product.conclusion %>
+</p>
+
+<p>
+  <strong>Aboutauthor:</strong>
+  <%= @product.aboutauthor %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

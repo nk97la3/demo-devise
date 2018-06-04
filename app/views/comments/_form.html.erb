@@ -1,0 +1,9 @@
+<%= form_for([@article, Comment.new]) do |f| %>
+<%-if user_signed_in?%>
+  <p hidden="hidden">
+    <%= f.text_field :commenter , require: true, value: current_user.email %>
+  </p>
+<%end%>
+    <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+    <%= f.submit "Add Comment"%>
+<% end %>
