@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :articles
   has_many :comments, as: :cm_duty,  dependent: :destroy
+  has_many :products
 
   def self.from_omniauth(access_token)
   	data = access_token.info

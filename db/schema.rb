@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_01_062719) do
+ActiveRecord::Schema.define(version: 2018_06_11_040320) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
@@ -30,16 +30,6 @@ ActiveRecord::Schema.define(version: 2018_06_01_062719) do
     t.string "cm_duty_type"
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.string "opening"
-    t.string "body"
-    t.string "conclusion"
-    t.string "aboutauthor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "opening"
@@ -49,6 +39,9 @@ ActiveRecord::Schema.define(version: 2018_06_01_062719) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "published"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -69,4 +62,5 @@ ActiveRecord::Schema.define(version: 2018_06_01_062719) do
   end
 
   add_foreign_key "articles", "users"
+  add_foreign_key "products", "users"
 end

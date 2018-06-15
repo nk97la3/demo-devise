@@ -9,6 +9,9 @@
       </ul>
     </div>
   <% end %>
+  <p hidden="hidden">
+    <%= f.text_field :user_id , require: true, value: current_user.id %></p>
+  <p>
   <div class="field"> 
     <%= f.label :title %><br>
     <%= f.text_field :title %>

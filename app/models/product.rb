@@ -1,14 +1,15 @@
 class Product < ApplicationRecord
     mount_uploader :image, ImageUploader
 
+    belongs_to :user
+    has_many :comments,as: :cm_duty
 
+  
     cattr_accessor :form_steps do
     	%w(step_one step_two step_three)
   	end
-
-    
-
-  	attr_accessor :form_step
+  
+    attr_accessor :form_step
 
   	validates :title, presence: true, if: -> { required_for_step?(:step_one) }
   	validates :opening, presence: true, if: -> { required_for_step?(:step_one) }

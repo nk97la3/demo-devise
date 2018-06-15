@@ -10,8 +10,8 @@ def create
       @comment = @cm_duty.comments.new comment_params
       
       if @comment.save
-        redirect_to @cm_duty and return if @cm_duty.class == Article
-        redirect_to article_cmt @cm_duty and return
+        redirect_to @cm_duty and return if @cm_duty.class == Product
+        redirect_to product_cmt @cm_duty and return
       else
         redirect_back fallback_location: root_path      
       end
@@ -33,14 +33,14 @@ def create
     end
     def find_cm_duty
       @cm_duty= Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-      @cm_duty= Article.find_by_id(params[:article_id]) if params[:article_id]
+      @cm_duty= Product.find_by_id(params[:product_id]) if params[:product_id]
     end
     #recursive to find article_id
-    def article_cmt (comment)
-      if comment.cm_duty == nil || comment.cm_duty.class == Article
+    def product_cmt (comment)
+      if comment.cm_duty == nil || comment.cm_duty.class == Product
         return comment.cm_duty
       end
 
-      article_cmt(comment.cm_duty)
+      product_cmt(comment.cm_duty)
     end
 end

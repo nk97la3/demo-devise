@@ -16,6 +16,10 @@ class Product::StepsController < ApplicationController
       elsif params[:Save]
         @product.save
         render_wizard
+      elsif params[:Publish]
+        @product.published = "published"
+        @product.save
+        render_wizard @product
       else
         render_wizard @product
       end
@@ -24,14 +28,14 @@ class Product::StepsController < ApplicationController
 
   	private
   	def product_params step
-  		permitted_attributes = case step
-                           	when "step_one"
-                             	[:title,:opening]
-                           	when "step_two"
-                            	[:image,:body]
-                           	when "step_three"
-                             	[:conclusion,:aboutauthor]
-                           	end
-    params.require(:product).permit(permitted_attributes).merge(form_step: step)
+  		permitted_attributes =  case step
+                           	    when "step_one"
+                             	    [:title,:opening,:user_id]
+                           	    when "step_two"
+                            	    [:image,:body]
+                           	    when "step_three"
+                             	    [:conclusion,:aboutauthor]
+                           	  end
+      params.require(:product).permit(permitted_attributes).merge(form_step: step)
   end
 end
